@@ -18,6 +18,7 @@ include "/var/www/tools.airwaveconsult.com/manage/include/user_handler.php";
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="icon" href="http://tools.airwaveconsult.com/manage/img/favicon.png" type="image/png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <header class="page_header">

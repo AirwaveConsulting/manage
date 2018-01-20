@@ -11,7 +11,7 @@ public function __construct(){
     $db_host = 'localhost';
     $db_user = 'root';
     $db_pass = 'Qw3rty2$$';
-    $db_name = 'timeapp';
+    $db_name = 'manage';
 
 		@parent::__construct($db_host, $db_user, $db_pass, $db_name);
    	if (mysqli_connect_error()) {
@@ -194,7 +194,7 @@ public function project_list($username,$status){
   AND projects.status = ?
   ";
   //MUST PASS BY REFERENCE (&) infront of variables
-  $params = array('si',&$username,&$status);
+  $params = array('ss',&$username,&$status);
   $result = $this->run_query($query, 'list', $params);
   return $result;
 }

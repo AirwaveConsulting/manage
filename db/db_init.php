@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 $db_host = 'localhost';
 $db_user = 'root';
 $db_pass = 'Qw3rty2$$';
-$db_name = 'timeapp';
+$db_name = 'manage';
 
 // connect
 $db = mysqli_connect($db_host, $db_user, $db_pass, $db_name);

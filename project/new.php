@@ -19,6 +19,7 @@ include "../include/header.php";
 <input type="text" id="client" name="client" placeholder="Client Name">
 <input type="text" id="start_date" name="start_date" placeholder="Project Start Date (YYYY-MM-DD)">
 <input type="text" id="end_date" name="end_date" placeholder="Project End Date (YYYY-MM-DD)">
+<input type="checkbox" value="archive" id="status" name="status"><label id="status_label" for="status">Add to completed projects?</label>
 <input type="submit" id="submit" value="Create Project">
 </form>
 </section>

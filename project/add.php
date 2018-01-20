@@ -23,17 +23,15 @@ if(isset($_POST['start_date'])){
 if(isset($_POST['end_date'])){
   $end_date = $_POST['end_date'];
 }
+if(isset($_POST['status'])){
+  $status = $_POST['status'];
+}
+else{
+  $status = 'current';
+}
 
 // others that we need
 $username = $_SESSION['username'];
-
-// figure out the status (1 for current, 0 for ended)
-if($end_date){
-  $status = 0;
-}
-else{
-  $status = 1;
-}
 
 $add = $db_handler->project_insert($name,$username,$start_date,$end_date,$status,$description,$client);
 

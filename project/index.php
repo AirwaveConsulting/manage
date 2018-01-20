@@ -14,16 +14,38 @@ include "/var/www/tools.airwaveconsult.com/manage/include/header.php";
 
 <section class="content">
 
+<!-- setup the 'project added' alert box -->
+<?php if(isset($_GET['add']) && $_GET['add'] == 'good'): ?>
+<div class="add">Project added successfully.<i class="fa fa-times"></i></div>
+
+<!-- hide the box on 'x' click or after 3 seconds -->
+<script type="text/javascript">
+$(function(){
+  setTimeout(function(){
+    $('div.add').fadeOut('600',function(){
+      $('div.add').remove();
+    })
+  }, 3000);
+});
+$('div.add i').click(function(){
+  $('div.add').remove();
+});
+</script>
+<?php endif; ?>
+
 <h2>Current Projects</h2>
 <!-- ongoing projects table -->
 <table>
 <tbody>
+<tr><th>Project Name</th><th>Client</th><th>Start Date</th><th>End Date</th></tr>
 <?php
-$results = $db_handler->project_list($username,1);
+$results = $db_handler->project_list($username,'current');
 
 if($results){
+  $row = '';
   foreach($results as $result){
-    echo "<tr>";
+    if($row == ''){$row = 'class="alt"';}else{$row = '';}
+    echo "<tr $row>";
     echo "<td>" . $result['name'] . "</td>";
     echo "<td>" . $result['client'] . "</td>";
     echo "<td>" . $result['start_date'] . "</td>";
@@ -42,12 +64,15 @@ else{
 <!-- ongoing projects table -->
 <table>
 <tbody>
+<tr><th>Project Name</th><th>Client</th><th>Start Date</th><th>End Date</th></tr>
 <?php
-$results = $db_handler->project_list($username,0);
+$results = $db_handler->project_list($username,'archive');
 
 if($results){
+  $row = '';
   foreach($results as $result){
-    echo "<tr>";
+    if($row == ''){$row = 'class="alt"';}else{$row = '';}
+    echo "<tr $row>";
     echo "<td>" . $result['name'] . "</td>";
     echo "<td>" . $result['client'] . "</td>";
     echo "<td>" . $result['start_date'] . "</td>";
