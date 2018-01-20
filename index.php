@@ -18,7 +18,7 @@ if($_SESSION['auth'] == 'yes'){
   header("Location: http://tools.airwaveconsult.com/manage/dashboard.php");
 }
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@ if($_SESSION['auth'] == 'yes'){
 
 <!-- login wrapper -->
 <section class="login">
-<h1><img src="img/logo.png"></h1>
+<h1><img src="img/logoblack.png"></h1>
 <form action="login.php" method="post">
   <input name="username" id=" username" type="text" placeholder="username">
   <input name="password" id="password" type="password" placeholder="password">

@@ -83,7 +83,12 @@ public function run_query($query, $type, $params)
 				break;
 			}
 			//RETURN DATA AND CLOSE
-			return $results;
+      if(isset($results)){
+        return $results;
+      }
+      else{
+        return false;
+      }
 			$stmt->close();
 		}//END PREPARE
 		else{
@@ -151,6 +156,47 @@ public function get_user_display_name($username){
 		$params = array('s',&$username);
 		$result = $this->run_query($query, 'info', $params);
 		return $result;
+}
+
+// PROJECT HANDLING
+
+// add project to table
+public function project_insert($name,$username,$start_date,$end_date,$status,$description,$client){
+  $query = "
+  INSERT INTO projects
+    (
+    name,
+    username,
+    start_date,
+    end_date,
+    status,
+    description,
+    client
+    )
+  VALUES
+    (?,?,?,?,?,?,?)
+  ";
+  //MUST PASS BY REFERENCE (&) infront of variables
+  $params = array('ssssiss',&$name,&$username,&$start_date,&$end_date,&$status,&$description,&$client);
+  $result = $this->run_query($query, 'insert', $params);
+  return $result;
+}
+
+// ongoing project list
+public function project_list($username,$status){
+  $query = "
+  SELECT
+    *
+  FROM
+    projects
+  WHERE
+    projects.username = ?
+  AND projects.status = ?
+  ";
+  //MUST PASS BY REFERENCE (&) infront of variables
+  $params = array('si',&$username,&$status);
+  $result = $this->run_query($query, 'list', $params);
+  return $result;
 }
 
 } // end class

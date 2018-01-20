@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // update session details from cookies if they aren't already
-if($_SESSION['auth'] != 'yes'){
+if(!isset($_SESSION['auth'])){
   $_SESSION['auth'] = $_COOKIE['auth'];
   $_SESSION['username'] = $_COOKIE['username'];
 }

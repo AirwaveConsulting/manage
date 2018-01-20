@@ -19,9 +19,15 @@ div.inner{
   margin:0 auto;
 }
 
+section.page{
+  width:90%;
+  max-width:1280px;
+  margin:0 auto;
+}
+
 /* page_header */
 header.page_header{
-  background: #557ab2;
+  background: #bdc3c7;
 }
 
 header.page_header:after{
@@ -42,7 +48,7 @@ header.page_header nav{
 
 header.page_header nav ul{
   list-style:none;
-  color:#fff;
+  color:#000;
   margin:0;
   padding:0;
   font-size:0;
@@ -54,7 +60,7 @@ header.page_header nav ul li{
 
 header.page_header nav ul li a{
   text-decoration:none;
-  color:#fff;
+  color:#000;
   padding:0px 20px;
   display:inline-block;
   line-height:62px;
@@ -63,13 +69,74 @@ header.page_header nav ul li a{
 }
 
 header.page_header nav ul li a:hover{
-  background:#44618e;
+  background:#979c9f;
   transition:0.1s;
 }
 
+header.page_header nav ul li.active a{
+  background:#979c9f;
+}
+
 header.page_header nav ul li.user{
-  background:#3b557c;
+  background:#84888b;
   font-size:1rem;
   line-height:62px;
   padding:0px 20px;
+}
+
+/* CONTENT STYLES */
+header.content_header{
+  border-bottom:2px solid #353535;
+  margin-top:50px;
+  padding-bottom:20px;
+}
+
+header.content_header h1{
+  color:#353535;
+  margin:0;
+  padding:0;
+  font-size:2em;
+}
+
+header.content_header h1 a{
+  color:#353535;
+  margin-left:40px;
+  position:relative;
+  top:2px;
+}
+
+/* the new whatever form */
+section.content form.new{
+  width:100%;
+  margin-top:20px;
+}
+
+section.content form.new input,
+section.content form.new textarea{
+  display:block;
+  margin-top:20px;
+  font-family:'Nunito', sans-serif;
+}
+
+section.content form.new input[type="text"],
+section.content form.new textarea{
+  width:100%;
+  padding:20px;
+  border-radius:5px;
+  border:1px solid #c0c0c0;
+  outline:none;
+}
+
+section.content form.new input[type="text"]:focus,
+section.content form.new textarea:focus{
+  border:1px solid #353535;
+}
+
+section.content form.new input#submit{
+  background:#557ab2;
+  border:none;
+  outline:none;
+  color:#fff;
+  padding:20px;
+  border-radius:5px;
 }
