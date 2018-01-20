@@ -3,3 +3,57 @@ body{
   background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
   background: linear-gradient(to bottom, #243B55, #141E30);
 }
+
+section.login{
+  display:inline-block;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translateX(-50%) translateY(-50%);
+}
+
+section.login h1{
+  color:#fff;
+  font-size:3em;
+  font-weight:normal;
+  margin:0;
+  padding:0;
+}
+
+section.login h1 img{
+  height:34px;
+  margin-right:20px;
+}
+
+section.login form input{
+  background:transparent;
+  border:none;
+  border-bottom:2px solid #fff;
+  outline:none;
+  font-family:'Nunito', sans-serif;
+  display:block;
+  font-size:1.5em;
+  margin-top:20px;
+  padding-bottom:10px;
+  color:#fff;
+}
+
+section.login form span.error{
+  color:#ff0000;
+  margin-top:20px;
+  display:block;
+}
+
+section.login form span.stay{
+  color:#fff;
+  display:block;
+  position:relative;
+  padding:15px 0px 0px 40px;
+  margin-top:10px;
+}
+
+section.login form span.stay input{
+  position:absolute;
+  top:0;
+  left:0;
+}

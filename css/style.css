@@ -1,5 +1,6 @@
 /* TIMEAPP STYLE */
 
+/* GENERAL STYLES */
 html{
   height:100%;
 }
@@ -8,4 +9,67 @@ body{
   margin:0;
   padding:0;
   height:100%;
+  font-family:'Nunito', sans-serif;
+  font-size:16px;
+}
+
+div.inner{
+  width:90%;
+  max-width:1280px;
+  margin:0 auto;
+}
+
+/* page_header */
+header.page_header{
+  background: #557ab2;
+}
+
+header.page_header:after{
+  content:'';
+  display:table;
+  clear:both;
+}
+
+header.page_header img.logo{
+  height:30px;
+  float:left;
+  margin:16px 0px;
+}
+
+header.page_header nav{
+  float:right;
+}
+
+header.page_header nav ul{
+  list-style:none;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-size:0;
+}
+
+header.page_header nav ul li{
+  display:inline-block;
+}
+
+header.page_header nav ul li a{
+  text-decoration:none;
+  color:#fff;
+  padding:0px 20px;
+  display:inline-block;
+  line-height:62px;
+  transition:0.1s;
+  font-size:1rem;
+}
+
+header.page_header nav ul li a:hover{
+  background:#44618e;
+  transition:0.1s;
+}
+
+header.page_header nav ul li.user{
+  background:#3b557c;
+  font-size:1rem;
+  line-height:62px;
+  padding:0px 20px;
 }

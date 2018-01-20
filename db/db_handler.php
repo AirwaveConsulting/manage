@@ -107,6 +107,52 @@ public function test_list(){
 		return $result;
 }
 
+///// USER HANDLING
+public function check_login($username){
+		$query = "
+		SELECT
+			password
+		FROM
+			users
+    WHERE
+      users.username = ?
+		";
+		//MUST PASS BY REFERENCE (&) infront of variables
+		$params = array('s',&$username);
+		$result = $this->run_query($query, 'info', $params);
+		return $result;
+}
+
+public function get_user_id($username){
+		$query = "
+		SELECT
+			userid
+		FROM
+			users
+    WHERE
+      users.username = ?
+		";
+		//MUST PASS BY REFERENCE (&) infront of variables
+		$params = array('s',&$username);
+		$result = $this->run_query($query, 'info', $params);
+		return $result;
+}
+
+public function get_user_display_name($username){
+		$query = "
+		SELECT
+			display_name
+		FROM
+			users
+    WHERE
+      users.username = ?
+		";
+		//MUST PASS BY REFERENCE (&) infront of variables
+		$params = array('s',&$username);
+		$result = $this->run_query($query, 'info', $params);
+		return $result;
+}
+
 } // end class
 
 ?>
