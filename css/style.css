@@ -47,7 +47,8 @@ header.page_header img.logo{
 }
 
 header.page_header nav{
-  float:right;
+  float:left;
+  margin-left:40px;
 }
 
 header.page_header nav ul{
@@ -70,22 +71,30 @@ header.page_header nav ul li a{
   line-height:82px;
   transition:0.1s;
   font-size:1rem;
+  border-right:1px solid transparent;
+  border-left:1px solid transparent;
 }
 
 header.page_header nav ul li a:hover{
-  background:#4B79A1;
+  background:#395873;
   transition:0.1s;
 }
 
 header.page_header nav ul li.active a{
-  background:#4B79A1;
+  background:#395873;
+  border-right:1px solid rgba(255,255,255,0.4);
+  border-left:1px solid rgba(255,255,255,0.4);
 }
 
-header.page_header nav ul li.user{
+header.page_header div.user{
   background:rgba(0,0,0,0.3);
   font-size:1rem;
   line-height:82px;
   padding:0px 20px;
+  border-left:1px solid #fff;
+  border-right:1px solid #fff;
+  float:right;
+  color:#fff;
 }
 
 /* CONTENT STYLES */
@@ -109,15 +118,37 @@ header.content_header h1 a{
   top:2px;
   font-size:0.5em;
   text-decoration:none;
-  background:#283E51;
+  background:#395873;
   padding:10px 15px;
   border-radius:5px;
   font-weight:normal;
   transition:0.1s;
+  margin-right:20px;
 }
 
 header.content_header h1 a:hover{
-  background:#4B79A1;
+  background:#283E51;
+  transition:0.1s;
+}
+
+header.content_header h1 a.delete{
+  color:#fff;
+  float:right;
+  position:relative;
+  top:2px;
+  font-size:0.5em;
+  text-decoration:none;
+  background:#E61D35;
+  padding:10px 15px;
+  border-radius:5px;
+  font-weight:normal;
+  transition:0.1s;
+  cursor:pointer;
+  margin-right:0;
+}
+
+header.content_header h1 a.delete:hover{
+  background:#b8172a;
   transition:0.1s;
 }
 
@@ -236,8 +267,8 @@ section.content div.delete i{
 }
 
 section.content h2{
-  margin:60px 0px 40px 0px;
-  border-bottom:1px dashed #353535;
+  margin:60px 0px 10px 0px;
+  border-bottom:2px solid #353535;
   padding-bottom:10px;
 }
 
@@ -251,7 +282,7 @@ section.content table tr td{
 }
 
 section.content table tr.alt td{
-  background:#c0c0c0;
+  background:#d9d9d9;
 }
 
 section.content table tr th{
@@ -266,9 +297,17 @@ section.content table tr td a{
   margin-right:20px;
 }
 
+section.content table tr td a.single{
+  font-size:1em;
+  margin-right:0;
+  color:#000;
+  text-decoration:none;
+}
+
 section.content table tr td i{
   color:#353535;
   font-size:1.2em;
+  cursor:pointer;
 }
 
 section.content table tr td a:last-child{

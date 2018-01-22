@@ -29,10 +29,16 @@ include "/var/www/m.airwave.consulting/include/user_handler.php";
 
         <?php
         // setup apps list to autogen menu w/ active links
-        $apps = array('Project','Time','Invoice');
+        $apps = array('Projects','Time','Invoice');
 
         foreach($apps as $app){
-          if($app == $page_title){
+
+          // see what app we are in (get the first directory on the url and match it to the app name)
+          $url = $_SERVER['REQUEST_URI'];
+          $urlParts = explode('/', str_ireplace(array('http://', 'https://'), '', $url));
+          $app_url = $urlParts[1];
+
+          if(strtolower($app) == strtolower($app_url)){
             echo '<li class="active"><a href="https://m.airwave.consulting/' . strtolower($app) . '/">' . strtoupper($app) . '</a></li>';
           }
           else{
@@ -40,10 +46,9 @@ include "/var/www/m.airwave.consulting/include/user_handler.php";
           }
         }
         ?>
-
-        <li class="user"><?php echo $_SESSION['user_display_name']; ?></li>
       </ul>
     </nav>
+    <div class="user"><?php echo $_SESSION['user_display_name']; ?></div>
   </div>
 </header>
 <section class="page">

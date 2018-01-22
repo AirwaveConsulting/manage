@@ -200,7 +200,6 @@ public function project_update($name,$start_date,$end_date,$status,$description,
   return $result;
 }
 
-// ongoing project list
 public function project_list($username,$status){
   $query = "
   SELECT
@@ -218,7 +217,7 @@ public function project_list($username,$status){
   return $result;
 }
 
-public function project_edit($id){
+public function project_info($id){
   $query = "
   SELECT
     *
@@ -229,7 +228,7 @@ public function project_edit($id){
   ";
   //MUST PASS BY REFERENCE (&) infront of variables
   $params = array('i',&$id);
-  $result = $this->run_query($query, 'list', $params);
+  $result = $this->run_query($query, 'info', $params);
   return $result;
 }
 

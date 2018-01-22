@@ -2,20 +2,20 @@
 // THE NEW.PHP FILE FOR INVOICE APP
 
 // set the page title for header
-$page_title = 'Project';
+$page_title = 'Projects';
 
 // grab the header
 include "../include/header.php";
 
 if(isset($_GET['edit'])){
-  $project = $db_handler->project_edit($_GET['edit']);
-  $project_id = $project[0]['id'];
-  $name = $project[0]['name'];
-  $description = $project[0]['description'];
-  $client = $project[0]['client'];
-  $start_date = $project[0]['start_date'];
-  $end_date = $project[0]['end_date'];
-  $status = $project[0]['status'];
+  $project = $db_handler->project_info($_GET['edit']);
+  $project_id = $project['id'];
+  $name = $project['name'];
+  $description = $project['description'];
+  $client = $project['client'];
+  $start_date = $project['start_date'];
+  $end_date = $project['end_date'];
+  $status = $project['status'];
 }
 else{
   $project = '';$name = '';$description = '';$client = '';$start_date = '';$end_date = '';$status = '';
@@ -25,8 +25,8 @@ else{
 <header class="content_header">
 <?php
 // check if new project or edit
-if($project){
-  echo '<h1>Edit Project&nbsp;&nbsp;&mdash;&nbsp;&nbsp;' . $project[0]['name'];
+if($name != ''){
+  echo '<h1>Edit Project&nbsp;&nbsp;&mdash;&nbsp;&nbsp;' . $name;
 }
 else{
   echo '<h1>Add New Project</h1>';
