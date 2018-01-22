@@ -6,17 +6,9 @@ session_start();
 include "db/db_init.php";
 
 // grab the deets
-$username = $_POST['username'];
-$password = $_POST['password'];
-$stay = $_POST['stay'];
-
-// check for empty inputs
-if(!$username){
-
-}
-if(!$password){
-
-}
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $stay = $_POST['stay'];
 
 // check db for deet match
 $check = $db_handler->check_login($username);
@@ -25,7 +17,7 @@ $check = $db_handler->check_login($username);
 if($password == $check['password']){
   $_SESSION['auth'] = 'yes';
   $_SESSION['username'] = $username;
-  header("Location: http://tools.airwaveconsult.com/manage/dashboard.php");
+  header("Location: https://m.airwave.consulting/dashboard.php");
 
   // check if they wanna stay logged in and set cookie if so
   if($stay == 'stay'){
@@ -34,7 +26,7 @@ if($password == $check['password']){
   }
 }
 else{
-  header("Location: http://tools.airwaveconsult.com/manage/index.php?login=no");
+  header("Location: https://m.airwave.consulting/index.php?login=no");
 }
 
 ?>

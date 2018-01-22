@@ -13,6 +13,10 @@ body{
   font-size:16px;
 }
 
+*{
+  box-sizing:border-box;
+}
+
 div.inner{
   width:90%;
   max-width:1280px;
@@ -27,7 +31,7 @@ section.page{
 
 /* page_header */
 header.page_header{
-  background: #bdc3c7;
+  background: #283E51;  /* fallback for old browsers */
 }
 
 header.page_header:after{
@@ -39,7 +43,7 @@ header.page_header:after{
 header.page_header img.logo{
   height:30px;
   float:left;
-  margin:16px 0px;
+  margin:26px 0px;
 }
 
 header.page_header nav{
@@ -48,7 +52,7 @@ header.page_header nav{
 
 header.page_header nav ul{
   list-style:none;
-  color:#000;
+  color:#fff;
   margin:0;
   padding:0;
   font-size:0;
@@ -60,27 +64,27 @@ header.page_header nav ul li{
 
 header.page_header nav ul li a{
   text-decoration:none;
-  color:#000;
+  color:#fff;
   padding:0px 20px;
   display:inline-block;
-  line-height:62px;
+  line-height:82px;
   transition:0.1s;
   font-size:1rem;
 }
 
 header.page_header nav ul li a:hover{
-  background:#979c9f;
+  background:#4B79A1;
   transition:0.1s;
 }
 
 header.page_header nav ul li.active a{
-  background:#979c9f;
+  background:#4B79A1;
 }
 
 header.page_header nav ul li.user{
-  background:#84888b;
+  background:rgba(0,0,0,0.3);
   font-size:1rem;
-  line-height:62px;
+  line-height:82px;
   padding:0px 20px;
 }
 
@@ -99,10 +103,28 @@ header.content_header h1{
 }
 
 header.content_header h1 a{
-  color:#353535;
-  margin-left:40px;
+  color:#fff;
+  float:right;
   position:relative;
   top:2px;
+  font-size:0.5em;
+  text-decoration:none;
+  background:#283E51;
+  padding:10px 15px;
+  border-radius:5px;
+  font-weight:normal;
+  transition:0.1s;
+}
+
+header.content_header h1 a:hover{
+  background:#4B79A1;
+  transition:0.1s;
+}
+
+header.content_header h1 a i{
+  position:relative;
+  top:1px;
+  margin-left:10px;
 }
 
 /* the new whatever form */
@@ -132,13 +154,41 @@ section.content form.new textarea:focus{
   border:1px solid #353535;
 }
 
-section.content form.new input#status{
-  display:inline-block !important;
-  margin:30px 0px 10px;
+section.content form.new select#status{
+  width:100%;
+  padding:20px;
+  background:#fff;
+  border-radius:5px;
+  border:1px solid #c0c0c0;
+  margin-top:20px;
+  color:#7f7f7f;
+  outline:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
-section.content form.new label#status_label{
-  margin-left:20px;
+section.content form.new select#status:focus{
+  border:1px solid #353535;
+  outline:none;
+  color:#353535;
+}
+
+.select_wrap{
+  position:relative;
+}
+
+.select_wrap:after {
+    content: '\f078';
+    font: normal normal normal 17px/1 FontAwesome;
+    color: #7f7f7f;
+    top:20px;
+    right:0;
+    padding:0px 20px;
+    height: 57px;
+    line-height:57px;
+    position: absolute;
+    pointer-events: none;
 }
 
 section.content form.new input#submit{
@@ -148,6 +198,7 @@ section.content form.new input#submit{
   color:#fff;
   padding:20px;
   border-radius:5px;
+  cursor:pointer;
 }
 
 section.content div.add{
@@ -160,6 +211,23 @@ section.content div.add{
 }
 
 section.content div.add i{
+  float:right;
+  font-size:2em;
+  position:relative;
+  top:-5px;
+  cursor:pointer;
+}
+
+section.content div.delete{
+  padding:20px;
+  color:#000;
+  background:#E61D35;
+  border-radius:5px;
+  border:1px solid #000;
+  margin-top:20px;
+}
+
+section.content div.delete i{
   float:right;
   font-size:2em;
   position:relative;
@@ -190,4 +258,101 @@ section.content table tr th{
   text-align:left;
   padding:0px 0px 10px 20px;
   border-bottom:2px solid #353535;
+}
+
+section.content table tr td a{
+  color:#353535;
+  font-size:1.2em;
+  margin-right:20px;
+}
+
+section.content table tr td i{
+  color:#353535;
+  font-size:1.2em;
+}
+
+section.content table tr td a:last-child{
+  margin-right:0;
+}
+
+section.content table tr td.actions{
+  position:relative;
+}
+section.content table tr td.actions div.confirm{
+  position:absolute;
+  background:#fff;
+  width:180px;
+  padding:15px;
+  border:1px solid #353535;
+  border-radius:5px;
+  font-size:0.8em;
+  left:-22px;
+  top:85%;
+  box-shadow:0px 0px 20px rgba(0,0,0,0.2);
+  z-index:999;
+  display:none;
+}
+
+section.content table tr td.actions div.confirm:after{
+  content:'';
+  display:table;
+  clear:both;
+}
+
+section.content table tr td.actions div.confirm:before {
+    content: '\f0d8';
+    font: normal normal normal 17px/1 FontAwesome;
+    color: #fff;
+    top:-13px;
+    left:50%;
+    transform:translateX(-50%) scale(2);
+    position: absolute;
+    pointer-events: none;
+    z-index:9999;
+}
+
+section.content table tr td.actions div.confirm p{
+  margin:0px 0px 10px 0px;
+}
+
+section.content table tr td.actions div.confirm a{
+  display:inline-block;
+  padding:10px;
+  background:#E61D35;
+  color:#fff;
+  width:45%;
+  margin-right:0;
+  text-align:center;
+  border-radius:5px;
+  cursor:pointer;
+  transition:0.1s;
+  text-decoration:none;
+}
+
+section.content table tr td.actions div.confirm a.yes{
+  float:left;
+}
+
+section.content table tr td.actions div.confirm a.yes:hover{
+  background:#b8172a;
+  transition:0.1s;
+}
+
+section.content table tr td.actions div.confirm a.no{
+  float:right;
+  background:#c0c0c0;
+  color:#353535;
+}
+
+section.content table tr td.actions div.confirm a.no:hover{
+  background:#999999;
+  transition:0.1s;
+}
+
+/* FOOTER STYLING */
+footer.page_footer{
+  padding:20px 0px;
+  margin-top:40px;
+  background: #283E51;
+  color:#fff;
 }

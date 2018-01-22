@@ -15,7 +15,7 @@ if($_SESSION['auth'] == ''){
 }
 
 if($_SESSION['auth'] == 'yes'){
-  header("Location: http://tools.airwaveconsult.com/manage/dashboard.php");
+  header("Location: http://m.airwave.consulting/dashboard.php");
 }
 ?>
 
@@ -23,7 +23,7 @@ if($_SESSION['auth'] == 'yes'){
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo $page_title; ?> // AW Manage</title>
+<title>Login // AW Manage</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/login.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -32,12 +32,15 @@ if($_SESSION['auth'] == 'yes'){
 
 <!-- login wrapper -->
 <section class="login">
-<h1><img src="img/logoblack.png"></h1>
+<h1><img src="img/logo.png"></h1>
 <form action="login.php" method="post">
-  <input name="username" id=" username" type="text" placeholder="username">
-  <input name="password" id="password" type="password" placeholder="password">
-  <span class="stay"><input name="stay" id="stay" type="checkbox" value="stay">Stay logged in?</span>
-  <input type="submit" style="display:none;">
+  <div class="login_wrap">
+  <input required name="username" id=" username" type="text" placeholder="username">
+  <input required name="password" id="password" type="password" placeholder="password">
+  <label class="stay" for="stay"><input name="stay" id="stay" type="checkbox" value="stay">Stay logged in?</label>
+  <input id="submit" type="submit" value="&rarr;">
+</div>
+
 
   <?php
   // if login deets are bad talk about it
@@ -52,6 +55,5 @@ if($_SESSION['auth'] == 'yes'){
 </section>
 
 <?php
-// grab the footer
-include "include/footer.php";
+
 ?>

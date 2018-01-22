@@ -15,7 +15,7 @@ public function __construct(){
 
 		@parent::__construct($db_host, $db_user, $db_pass, $db_name);
    	if (mysqli_connect_error()) {
-      header("Location: http://tools.airwaveconsult.com/time/ofuck.html");
+      header("Location: http://m.airwave.consulting/ofuck.html");
       exit;
 		 }
 
@@ -177,8 +177,26 @@ public function project_insert($name,$username,$start_date,$end_date,$status,$de
     (?,?,?,?,?,?,?)
   ";
   //MUST PASS BY REFERENCE (&) infront of variables
-  $params = array('ssssiss',&$name,&$username,&$start_date,&$end_date,&$status,&$description,&$client);
+  $params = array('sssssss',&$name,&$username,&$start_date,&$end_date,&$status,&$description,&$client);
   $result = $this->run_query($query, 'insert', $params);
+  return $result;
+}
+
+public function project_update($name,$start_date,$end_date,$status,$description,$client,$project_id){
+  $query = "
+  UPDATE projects SET
+    name = ?,
+    start_date = ?,
+    end_date = ?,
+    status = ?,
+    description = ?,
+    client = ?
+  WHERE
+    id = ?
+  ";
+  //MUST PASS BY REFERENCE (&) infront of variables
+  $params = array('ssssssi',&$name,&$start_date,&$end_date,&$status,&$description,&$client,&$project_id);
+  $result = $this->run_query($query, 'update', $params);
   return $result;
 }
 
@@ -192,10 +210,38 @@ public function project_list($username,$status){
   WHERE
     projects.username = ?
   AND projects.status = ?
+  ORDER BY start_date DESC
   ";
   //MUST PASS BY REFERENCE (&) infront of variables
   $params = array('ss',&$username,&$status);
   $result = $this->run_query($query, 'list', $params);
+  return $result;
+}
+
+public function project_edit($id){
+  $query = "
+  SELECT
+    *
+  FROM
+    projects
+  WHERE
+    projects.id = ?
+  ";
+  //MUST PASS BY REFERENCE (&) infront of variables
+  $params = array('i',&$id);
+  $result = $this->run_query($query, 'list', $params);
+  return $result;
+}
+
+public function project_delete($id){
+  $query = "
+  DELETE FROM
+    projects
+  WHERE
+    id = ?
+  ";
+  $params = array('i',&$id);
+  $result = $this->run_query($query, 'delete', $params);
   return $result;
 }
 

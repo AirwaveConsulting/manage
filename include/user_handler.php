@@ -14,7 +14,7 @@ if(!isset($_SESSION['auth'])){
 
 // if they aren't logged in kick em out
 if($_SESSION['auth'] != 'yes'){
-  header("Location: http://tools.airwaveconsult.com/manage/index.php");
+  header("Location: http://m.airwave.consulting/index.php");
 }
 
 $username = $_SESSION['username'];

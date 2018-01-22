@@ -24,16 +24,27 @@ if(isset($_POST['end_date'])){
   $end_date = $_POST['end_date'];
 }
 if(isset($_POST['status'])){
-  $status = $_POST['status'];
-}
-else{
-  $status = 'current';
+  if($_POST['status'] == 'select'){
+    $status = 'current';
+  }
+  else{
+    $status = $_POST['status'];
+  }
 }
 
 // others that we need
 $username = $_SESSION['username'];
 
-$add = $db_handler->project_insert($name,$username,$start_date,$end_date,$status,$description,$client);
+// see if it's an edit (id will be present if it is)
+if(isset($_POST['project_id'])){
+  $project_id = $_POST['project_id'];
+  $update = $db_handler->project_update($name,$start_date,$end_date,$status,$description,$client,$project_id);
+  header("Location: http://m.airwave.consulting/project/index.php?update=good");
+}
+else{
+  $add = $db_handler->project_insert($name,$username,$start_date,$end_date,$status,$description,$client);
+  header("Location: http://m.airwave.consulting/project/index.php?add=good");
+}
 
-header("Location: http://tools.airwaveconsult.com/manage/project/index.php?add=good");
+
 ?>
