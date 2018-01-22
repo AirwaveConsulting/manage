@@ -7,7 +7,7 @@ session_start();
 // include db connect
 include "/var/www/m.airwave.consulting/db/db_init.php";
 
-include "/var/www/m.airwave.consulting/include/user_handler.php";
+include "/var/www/m.airwave.consulting/user/user_auth.php";
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +48,15 @@ include "/var/www/m.airwave.consulting/include/user_handler.php";
         ?>
       </ul>
     </nav>
-    <div class="user"><?php echo $_SESSION['user_display_name']; ?></div>
+    <div class="user">
+      <?php echo $user_display_name; ?>
+      <i class="fa fa-chevron-down"></i>
+      <div class="drop">
+        <ul>
+          <li><a href="https://m.airwave.consulting/user/settings.php">Settings</a></li>
+          <li><a href="https://m.airwave.consulting/user/logout.php">Logout</a></li>
+        </ul>
+    </div>
   </div>
 </header>
 <section class="page">

@@ -6,16 +6,12 @@
 session_start();
 
 // include db connect
-include "../db/db_init.php";
+include "db/db_init.php";
 
-// update session details from cookies if they aren't already
-if($_SESSION['auth'] == ''){
-  $_SESSION['auth'] = $_COOKIE['auth'];
-  $_SESSION['username'] = $_COOKIE['username'];
-}
-
-if($_SESSION['auth'] == 'yes'){
+// if they are logged in send to dashboard
+if(isset($_SESSION['username'])){
   header("Location: http://m.airwave.consulting/dashboard.php");
+  exit;
 }
 ?>
 
@@ -23,7 +19,7 @@ if($_SESSION['auth'] == 'yes'){
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login // AW Manage</title>
+<title>AW Manage</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/login.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -33,7 +29,7 @@ if($_SESSION['auth'] == 'yes'){
 <!-- login wrapper -->
 <section class="login">
 <h1><img src="img/logo.png"></h1>
-<form action="login.php" method="post">
+<form action="user/login.php" method="post">
   <div class="login_wrap">
   <input required name="username" id=" username" type="text" placeholder="username">
   <input required name="password" id="password" type="password" placeholder="password">
@@ -44,12 +40,12 @@ if($_SESSION['auth'] == 'yes'){
 
   <?php
   // if login deets are bad talk about it
-  if($_GET['login'] == 'no'):
+  if(isset($_GET['login'])){
+    if($_GET['login'] == 'no'){
+      echo '<span class="error">Login details incorrect. Try again.</span>';
+    }
+  }
   ?>
-
-  <span class="error">Login details incorrect. Try again.</span>
-
-  <?php endif; ?>
 
 </form>
 </section>

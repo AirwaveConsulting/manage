@@ -1,6 +1,8 @@
 <?php
 // THE INDEX.PHP FILE FOR PROJECT APP
 
+session_start();
+
 // set the page title for header
 $page_title = 'Projects';
 
@@ -60,7 +62,7 @@ $('div#message i').click(function(){
 $results = $db_handler->project_list($username,'current');
 
 if($results){
-  $row = '';
+  $row = 'class="alt"';
   foreach($results as $result){
     // convert dates to be readable
     $start_date = strtotime($result['start_date']);
@@ -104,7 +106,7 @@ else{
 $results = $db_handler->project_list($username,'archive');
 
 if($results){
-  $row = '';
+  $row = 'class="alt"';
   foreach($results as $result){
     // convert dates to unix timestamp
     $end_date = strtotime($result['end_date']);
