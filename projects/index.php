@@ -15,7 +15,7 @@ include "/var/www/m.airwave.consulting/include/header.php";
 ?>
 
 <header class="content_header">
-<h1>Projects <a href="new.php">Add New<i class="fa fa-plus"></i></a></h1>
+<h1>Projects <div class="button_wrap"><a href="new.php">Add New<i class="fa fa-plus"></i></a></div></h1>
 </header>
 
 <section class="content">

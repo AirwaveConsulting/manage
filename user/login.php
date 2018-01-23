@@ -27,7 +27,6 @@ if($password == $check['password']){
 
   // check if they wanna stay logged in and set cookie if so
   if(isset($stay) && $stay == 'stay'){
-    setcookie('auth','yes',time()+864000);
     setcookie('username',$username,time()+864000);
   }
 

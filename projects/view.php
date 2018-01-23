@@ -19,7 +19,7 @@ else{
 ?>
 
 <header class="content_header">
-<h1><?php echo $info['name']; ?> <a class="delete">Delete Project<i class="fa fa-trash"></i></a><a href="new.php?archive=<?php echo $info['id']; ?>">Archive Project<i class="fa fa-archive"></i></a><a href="new.php?edit=<?php echo $info['id']; ?>">Edit Project<i class="fa fa-pencil"></i></a></h1>
+<h1><?php echo $info['name']; ?> <div class="button_wrap"><a href="new.php?edit=<?php echo $info['id']; ?>">Edit<i class="fa fa-pencil"></i></a><a href="new.php?archive=<?php echo $info['id']; ?>">Archive<i class='fa fa-archive'></i></a><a class="delete">Delete<i class="fa fa-trash"></i></a></div></h1>
 </header>
 
 <?php
