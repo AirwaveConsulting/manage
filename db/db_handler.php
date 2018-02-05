@@ -15,7 +15,7 @@ public function __construct(){
 
 		@parent::__construct($db_host, $db_user, $db_pass, $db_name);
    	if (mysqli_connect_error()) {
-      header("Location: http://m.airwave.consulting/ofuck.html");
+      header("Location: https://m.airwave.consulting/ofuck.html");
       exit;
 		 }
 
@@ -196,6 +196,19 @@ public function project_update($name,$start_date,$end_date,$status,$description,
   ";
   //MUST PASS BY REFERENCE (&) infront of variables
   $params = array('ssssssi',&$name,&$start_date,&$end_date,&$status,&$description,&$client,&$project_id);
+  $result = $this->run_query($query, 'update', $params);
+  return $result;
+}
+
+public function update_project_status($project_id,$status){
+  $query = "
+  UPDATE projects SET
+    status = ?
+  WHERE
+    id = ?
+  ";
+  //MUST PASS BY REFERENCE (&) infront of variables
+  $params = array('ss',&$status,&$project_id);
   $result = $this->run_query($query, 'update', $params);
   return $result;
 }

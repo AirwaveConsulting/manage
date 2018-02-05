@@ -39,11 +39,11 @@ $username = $_SESSION['username'];
 if(isset($_POST['project_id'])){
   $project_id = $_POST['project_id'];
   $update = $db_handler->project_update($name,$start_date,$end_date,$status,$description,$client,$project_id);
-  header("Location: http://m.airwave.consulting/projects/index.php?update=good");
+  header("Location: https://m.airwave.consulting/projects/index.php?update=good");
 }
 else{
   $add = $db_handler->project_insert($name,$username,$start_date,$end_date,$status,$description,$client);
-  header("Location: http://m.airwave.consulting/projects/index.php?add=good");
+  header("Location: https://m.airwave.consulting/projects/index.php?add=good");
 }
 
 

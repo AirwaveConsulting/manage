@@ -10,7 +10,7 @@ include "db/db_init.php";
 
 // if they are logged in send to dashboard
 if(isset($_SESSION['username'])){
-  header("Location: http://m.airwave.consulting/dashboard.php");
+  header("Location: https://m.airwave.consulting/dashboard.php");
   exit;
 }
 ?>

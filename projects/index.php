@@ -15,13 +15,13 @@ include "/var/www/m.airwave.consulting/include/header.php";
 ?>
 
 <header class="content_header">
-<h1>Projects <div class="button_wrap"><a href="new.php">Add New<i class="fa fa-plus"></i></a></div></h1>
+<h1>Projects <div class="button_wrap"><a href="edit.php">Add New<i class="fa fa-plus"></i></a></div></h1>
 </header>
 
 <section class="content">
 
 <!-- setup the 'project added' alert box -->
-<?php if(isset($_GET['add']) || isset($_GET['delete']) || isset($_GET['update'])):
+<?php if($_SERVER['REQUEST_METHOD'] === 'GET'):
   if(isset($_GET['add']) && $_GET['add'] == 'good'){
     $message = 'Project added successfully!';
     $class = 'add';
@@ -32,6 +32,10 @@ include "/var/www/m.airwave.consulting/include/header.php";
   }
   if(isset($_GET['update']) && $_GET['update'] == 'good'){
     $message = 'Project updated successfully!';
+    $class = 'add';
+  }
+  if(isset($_GET['complete']) && $_GET['complete'] == 'good'){
+    $message = 'Project marked as complete! Great job, keep it up!';
     $class = 'add';
   }
 ?>
@@ -74,7 +78,16 @@ if($results){
     echo "<td>" . $result['client'] . "</td>";
     echo "<td>" . $start_date . "</td>";
     ?>
-    <td class="actions"><a title='Edit Project' href='new.php?edit=<?php echo $result['id']; ?>'><i class='fa fa-pencil'></i></a><i class='delete<?php echo $result['id']; ?> fa fa-trash' title='Delete Project'></i><div class='confirm <?php echo $result['id']; ?>'><p>Are you sure you want to delete "<?php echo $result['name']; ?>"? This cannot be undone.</p><a href="https://m.airwave.consulting/project/delete.php?project=<?php echo $result['id']; ?>" class="yes">Yes</a><a class="no">Cancel</a><div></td>
+    <td class="actions">
+      <a title='Mark Complete' href='complete.php?project_status=archive&project_id=<?php echo $result['id']; ?>'><i class="fa fa-check"></i></a>
+      <a title='Edit Project' href='edit.php?edit=<?php echo $result['id']; ?>'><i class='fa fa-pencil'></i></a>
+      <i class='delete<?php echo $result['id']; ?> fa fa-trash' title='Delete Project'></i>
+        <div class='confirm <?php echo $result['id']; ?>'>
+          <p>Are you sure you want to delete "<?php echo $result['name']; ?>"? This cannot be undone.</p>
+          <a href="https://m.airwave.consulting/project/delete.php?project=<?php echo $result['id']; ?>" class="yes">Yes</a>
+          <a class="no">Cancel</a>
+        <div>
+    </td>
     <?php
     echo "</tr>";
     ?>
@@ -129,7 +142,7 @@ if($results){
     echo "<td>" . $result['client'] . "</td>";
     echo "<td>" . $duration . "</td>";
     ?>
-    <td class="actions"><a title='Edit Project' href='new.php?edit=<?php echo $result['id']; ?>'><i class='fa fa-pencil'></i></a><i class='delete<?php echo $result['id']; ?> fa fa-trash' title='Delete Project'></i><div class='confirm <?php echo $result['id']; ?>'><p>Are you sure you want to delete "<?php echo $result['name']; ?>"? This cannot be undone.</p><a href="https://m.airwave.consulting/project/delete.php?project=<?php echo $result['id']; ?>" class="yes">Yes</a><a class="no">Cancel</a><div></td>
+    <td class="actions"><a title='Edit Project' href='edit.php?edit=<?php echo $result['id']; ?>'><i class='fa fa-pencil'></i></a><i class='delete<?php echo $result['id']; ?> fa fa-trash' title='Delete Project'></i><div class='confirm <?php echo $result['id']; ?>'><p>Are you sure you want to delete "<?php echo $result['name']; ?>"? This cannot be undone.</p><a href="https://m.airwave.consulting/project/delete.php?project=<?php echo $result['id']; ?>" class="yes">Yes</a><a class="no">Cancel</a><div></td>
     <?php
     echo "</tr>";
     ?>

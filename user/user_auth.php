@@ -12,7 +12,7 @@ if(!isset($_SESSION['username'])){
 
 // if they aren't logged in kick em out
 if(!isset($_SESSION['username'])){
-  header("Location: http://m.airwave.consulting/index.php");
+  header("Location: https://m.airwave.consulting/index.php");
   exit;
 }
 

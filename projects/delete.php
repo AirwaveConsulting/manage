@@ -12,11 +12,11 @@ if(isset($_GET['project'])){
   $project = $_GET['project'];
 }
 else{
-  header("Location: http://m.airwave.consulting/project/index.php?delete=bad");
+  header("Location: https://m.airwave.consulting/project/index.php?delete=bad");
   exit;
 }
 
 $delete = $db_handler->project_delete($project);
 
-header("Location: http://m.airwave.consulting/project/index.php?delete=good");
+header("Location: https://m.airwave.consulting/project/index.php?delete=good");
 ?>
