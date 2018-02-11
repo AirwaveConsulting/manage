@@ -12,9 +12,18 @@ if(isset($_GET['project_id'])){
   $status = $_GET['project_status'];
 }
 
+// figure out what date to insert
+if($status == 'archive'){
+  $current_date = date('Y-m-d');
+}
+else{
+  $current_date = '0000-00-00';
+}
+
+// run the call boy
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
-  $db_handler->update_project_status($project_id,$status);
-  header("Location: https://m.airwave.consulting/projects/index.php?complete=good");
+  $db_handler->update_project_status($project_id,$status,$current_date);
+  header("Location: https://m.airwave.consulting/projects/index.php?complete=$status");
 }
 
 ?>

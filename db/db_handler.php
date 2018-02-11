@@ -200,15 +200,16 @@ public function project_update($name,$start_date,$end_date,$status,$description,
   return $result;
 }
 
-public function update_project_status($project_id,$status){
+public function update_project_status($project_id,$status,$date){
   $query = "
   UPDATE projects SET
     status = ?
+    end_date = ?
   WHERE
     id = ?
   ";
   //MUST PASS BY REFERENCE (&) infront of variables
-  $params = array('ss',&$status,&$project_id);
+  $params = array('sss',&$status,&$date,&$project_id);
   $result = $this->run_query($query, 'update', $params);
   return $result;
 }

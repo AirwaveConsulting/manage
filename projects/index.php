@@ -34,8 +34,13 @@ include "/var/www/m.airwave.consulting/include/header.php";
     $message = 'Project updated successfully!';
     $class = 'add';
   }
-  if(isset($_GET['complete']) && $_GET['complete'] == 'good'){
-    $message = 'Project marked as complete! Great job, keep it up!';
+  if(isset($_GET['complete'])){
+    if($_GET['complete'] == 'current'){
+      $message = 'Project marked as incomplete! Get it done!';
+    }
+    else{
+      $message = 'Project marked as complete! Great job, keep it up!';
+    }
     $class = 'add';
   }
 ?>
@@ -142,7 +147,16 @@ if($results){
     echo "<td>" . $result['client'] . "</td>";
     echo "<td>" . $duration . "</td>";
     ?>
-    <td class="actions"><a title='Edit Project' href='edit.php?edit=<?php echo $result['id']; ?>'><i class='fa fa-pencil'></i></a><i class='delete<?php echo $result['id']; ?> fa fa-trash' title='Delete Project'></i><div class='confirm <?php echo $result['id']; ?>'><p>Are you sure you want to delete "<?php echo $result['name']; ?>"? This cannot be undone.</p><a href="https://m.airwave.consulting/project/delete.php?project=<?php echo $result['id']; ?>" class="yes">Yes</a><a class="no">Cancel</a><div></td>
+    <td class="actions">
+      <a title='Mark Incomplete' href='complete.php?project_status=current&project_id=<?php echo $result['id']; ?>'><i class="fa fa-chevron-circle-up"></i></a>
+      <a title='Edit Project' href='edit.php?edit=<?php echo $result['id']; ?>'><i class='fa fa-pencil'></i></a>
+      <i class='delete<?php echo $result['id']; ?> fa fa-trash' title='Delete Project'></i>
+      <div class='confirm <?php echo $result['id']; ?>'>
+        <p>Are you sure you want to delete "<?php echo $result['name']; ?>"? This cannot be undone.</p>
+        <a href="https://m.airwave.consulting/project/delete.php?project=<?php echo $result['id']; ?>" class="yes">Yes</a>
+        <a class="no">Cancel</a>
+      <div>
+    </td>
     <?php
     echo "</tr>";
     ?>
